@@ -35,6 +35,10 @@ module SessionsHelper
     redirect_to(session[:return_to] || default)
   end
 
+  def authenticate
+    deny_access unless signed_in?
+  end
+
   private
   
     def user_from_remember_token
